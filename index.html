@@ -24,22 +24,22 @@
     }
 
     img.logo {
-      max-width: 700px;
+      max-width: 40%;
       height: auto;
-      margin-bottom: 1rem;
-      
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
     p {
       max-width: 600px;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
     }
 
     a.button {
@@ -49,7 +49,7 @@
       color: #fff;
       text-decoration: none;
       border-radius: 10px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       transition: background 0.3s ease, transform 0.2s;
     }
@@ -57,6 +57,27 @@
     a.button:hover {
       background-color: #b38000;
       transform: scale(1.05);
+    }
+
+    .note {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #7a5f3b;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      a.button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .note {
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -69,5 +90,8 @@
   <a class="button" href="https://github.com/Prague-Shenanigans/shenanigans-fe/releases/download/v0.0.1/shenanigans-v0.0.1.apk" target="_blank">
     Enter the Shenanigans
   </a>
+  <div class="note">
+    Downloads an Android APK file (for Android devices only)
+  </div>
 </body>
 </html>
