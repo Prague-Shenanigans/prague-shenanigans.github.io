@@ -1,0 +1,53 @@
+[x-cloak] {
+    display: none;
+}
+
+iframe {
+    border: none;
+}
+
+/* Main layout padding to account for fixed header */
+main {
+    padding-top: 7rem;
+}
+
+/* Logo responsiveness */
+header img {
+    height: 4rem;
+}
+@media (min-width: 640px) {
+    header img {
+        height: 6rem;
+    }
+}
+
+/* Navigation buttons (center top) */
+.nav-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-accent-1);
+    border-radius: 999px;
+    background-color: var(--color-accent-1);
+    color: var(--color-bg-base);
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+}
+.nav-button:hover {
+    opacity: 0.85;
+}
+.active-nav {
+    box-shadow: 0 0 0 2px var(--color-primary) inset;
+}
+
+/* Contact button (top right) */
+.contact-button {
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}

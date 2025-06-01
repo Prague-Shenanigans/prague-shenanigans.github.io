@@ -1,0 +1,22 @@
+:root {
+    --color-primary: #511E1E;         /* Midnight Brick */
+    --color-secondary: #D6BFAE;       /* Dusty Sandstone */
+    --color-accent-1: #C79F53;        /* Brass Gold */
+    --color-accent-2: #593B4C;        /* Velvet Plum */
+    --color-interactive: #2F5061;     /* Cerulean Ink */
+    --color-highlight: #C24E4B;       /* Bohemian Coral */
+    --color-bg-base: #F5F3F0;         /* Foggy White */
+    --color-text-base: #2A2A2A;       /* Charcoal Graphite */
+}
+
+body {
+    background: var(--color-bg-base);
+    color: var(--color-text-base);
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}

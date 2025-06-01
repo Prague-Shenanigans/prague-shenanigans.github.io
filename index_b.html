@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prague Shenanigans</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #f8f1e4;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      color: #3b2f2f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    img.logo {
+      max-width: 100%;
+      max-height: 300px;
+      height: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #cc9900;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    a.button:hover {
+      background-color: #b38000;
+      transform: scale(1.05);
+    }
+
+    .note {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #7a5f3b;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      a.button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .note {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+  </head>
+  <body>
+    <img class="logo" src="web_logo.png" alt="Prague Shenanigans Logo" />
+    <p>
+      A local-powered app to help both residents and tourists discover Prague’s
+      hidden gems,
+      quirky facts, cool places, and navigate the city with ease.
+    </p>
+    <a class="button"
+      href="https://github.com/Prague-Shenanigans/shenanigans-fe/releases/download/v0.0.1/shenanigans-v0.0.1.apk"
+      target="_blank">
+      Enter the Shenanigans
+    </a>
+    <div class="note">
+      Downloads an Android APK file (for Android devices only)
+    </div>
+  </body>
+</html>
