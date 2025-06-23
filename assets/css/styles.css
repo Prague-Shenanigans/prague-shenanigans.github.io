@@ -2,19 +2,19 @@
     display: none;
 }
 
-iframe {
+/* iframe {
     border: none;
-}
+} */
 
 /* Main layout padding to account for fixed header */
-main {
+/* main {
     padding-top: 7rem;
-}
+} */
 
 /* Logo responsiveness */
-header img {
+/* header img {
     height: 4rem;
-}
+} */
 @media (min-width: 640px) {
     header img {
         height: 6rem;
@@ -40,7 +40,7 @@ header img {
 }
 
 /* Contact button (top right) */
-.contact-button {
+/* .contact-button {
     padding: 0.5rem 0.75rem;
     border: 2px solid var(--color-primary);
     background: transparent;
@@ -50,4 +50,4 @@ header img {
     border-radius: 0.5rem;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-}
+} */
