@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pull-to-Refresh Test</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+      touch-action: pan-x pan-y;   /* Allow normal scroll but block refresh */
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    main {
+      margin-top: 70px;
+      padding: 1rem;
+    }
+
+    .spacer {
+      height: 2000px;
+      background: linear-gradient(to bottom, #f4f4f4, #ddd);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Test Pull-to-Refresh</h1>
+    <p>Try to swipe down on mobile</p>
+  </header>
+  <main>
+    <p>This static page disables pull-to-refresh using CSS.</p>
+    <div class="spacer"></div>
+  </main>
+</body>
+</html>
