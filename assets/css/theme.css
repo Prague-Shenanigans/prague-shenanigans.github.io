@@ -15,6 +15,8 @@ body {
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
+    overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+    touch-action: pan-x pan-y;   /* Allow normal scroll */
 }
 
 a:hover {
