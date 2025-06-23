@@ -9,7 +9,7 @@
     --color-text-base: #2A2A2A;       /* Charcoal Graphite */
 }
 
-body {
+html, body {
     background: var(--color-bg-base);
     color: var(--color-text-base);
     font-family: 'Georgia', serif;
