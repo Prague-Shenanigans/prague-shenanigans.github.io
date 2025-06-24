@@ -8,9 +8,9 @@
     <title>Prague Shenanigans</title>
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
 
   <body x-cloak>
@@ -42,76 +42,22 @@
 
         <!-- Navigation (desktop) -->
         <nav class="hidden sm:flex space-x-6">
-          <button @click="section = 'mission'; menuOpen = false"
-            :class="{ 'active-nav': section === 'mission' }"
-            class="nav-button">Mission</button>
-          <button @click="section = 'map'; menuOpen = false"
-            :class="{ 'active-nav': section === 'map' }"
-            class="nav-button">Map</button>
-          <button @click="section = 'podcasts'; menuOpen = false"
-            :class="{ 'active-nav': section === 'podcasts' }"
-            class="nav-button">Podcasts</button>
+          <button hx-get="pages/mission.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Mission</button>
+          <button hx-get="pages/map.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Map</button>
+          <button hx-get="pages/podcasts.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Podcasts</button>
         </nav>
       </div>
 
       <!-- Mobile Navigation (dropdown) -->
       <div class="sm:hidden mt-3 px-2 space-y-2" x-show="menuOpen" x-transition>
-        <button @click="section = 'mission'; menuOpen = false"
-          :class="{ 'active-nav': section === 'mission' }"
-          class="w-full text-left nav-button">Mission</button>
-        <button @click="section = 'map'; menuOpen = false"
-          :class="{ 'active-nav': section === 'map' }"
-          class="w-full text-left nav-button">Map</button>
-        <button @click="section = 'podcasts'; menuOpen = false"
-          :class="{ 'active-nav': section === 'podcasts' }"
-          class="w-full text-left nav-button">Podcasts</button>
+        <button hx-get="pages/mission.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Mission</button>
+        <button hx-get="pages/map.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Map</button>
+        <button hx-get="pages/podcasts.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Podcasts</button>
       </div>
     </header>
 
-    <!-- Main Sections -->
-    <main class="pt-32 px-6 max-w-4xl mx-auto">
-      <!-- Mission -->
-      <section x-show="section === 'mission'" x-transition>
-        <h1 class="text-4xl font-serif mb-4 text-[var(--color-primary)]">Our
-          Mission</h1>
-        <p class="text-lg leading-relaxed">
-          Prague Shenanigans is a local-first, story-driven map project that
-          highlights weird spots, vibrant
-          communities, and untold micro-histories of the city.
-          We believe there’s more to Prague than overpriced beer and postcards —
-          and we're here to prove it.
-        </p>
-      </section>
-
-      <!-- Podcasts -->
-      <section x-show="section === 'podcasts'" x-transition>
-        <h2 class="text-3xl font-serif mb-4 text-[var(--color-primary)]">Podcast
-          Conversations</h2>
-        <ul class="space-y-4">
-          <li>
-            <h3 class="text-xl font-bold">🎧 Jan from Žižkov –
-              "What I See From My Window"</h3>
-            <p><a href="https://open.spotify.com" target="_blank"
-                class="text-[var(--color-interactive)] underline">Listen on
-                Spotify</a></p>
-          </li>
-          <li>
-            <h3 class="text-xl font-bold">🎧 Lucie the Tram Driver –
-              "How to Read the Tracks"</h3>
-            <p><a href="https://youtube.com" target="_blank"
-                class="text-[var(--color-interactive)] underline">Watch on
-                YouTube</a></p>
-          </li>
-        </ul>
-      </section>
-    </main>
-
-    <!-- Map Section -->
-    <div x-show="section === 'map'"
-      class="absolute top-0 left-0 w-full h-screen" x-transition>
-      <iframe src="https://prague-shenanigans.netlify.app/#/"
-        class="w-full h-full"></iframe>
-    </div>
+    <!-- Main Content Container -->
+    <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto" hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML"></main>
 
   </body>
 
