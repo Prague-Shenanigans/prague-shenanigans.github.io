@@ -6,6 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prague Shenanigans</title>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer
@@ -92,6 +94,19 @@
           fadeSection.classList.add('htmx-added');
         }
       });
+
+      function podcastList() {
+        const state = {
+          podcasts: [],
+            async load() {
+            const response = await fetch('podcasts.json');
+            this.podcasts = await response.json();
+        }
+        };
+        return state;
+      }
+
+
     </script>
 
   </body>

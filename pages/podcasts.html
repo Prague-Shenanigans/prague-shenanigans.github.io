@@ -1,17 +1,52 @@
-<section class="fade" >
+<section class="fade" x-data="podcastList()" x-init="load()">
   <h2 class="text-3xl font-serif mb-4 text-[var(--color-primary)]">Meet the people of Prague</h2>
   <h3 class="text-lg leading-relaxed mb-6">
     Our podcasts feature the voices of locals who share their unique stories, experiences, and insights about life in Prague.
     From tram drivers to window watchers, these are the people who make this city truly special.
   </h3>
-  <ul class="space-y-4">
-    <li>
-      <h3 class="text-xl font-bold">🎧 Jan from Žižkov – "What I See From My Window"</h3>
-      <p><a href="https://open.spotify.com" target="_blank" class="text-[var(--color-interactive)] underline">Listen on Spotify</a></p>
-    </li>
-    <li>
-      <h3 class="text-xl font-bold">🎧 Lucie the Tram Driver – "How to Read the Tracks"</h3>
-      <p><a href="https://youtube.com" target="_blank" class="text-[var(--color-interactive)] underline">Watch on YouTube</a></p>
-    </li>
-  </ul>
+
+  <template x-for="podcast in podcasts" :key="podcast.name">
+    <div class="bg-white p-4 rounded shadow space-y-4 py-4 my-4">
+      <div class="flex flex-col sm:flex-row gap-4">
+
+        <!-- Video / Image -->
+        <div class="flex-shrink-0 w-full sm:w-1/2 aspect-video bg-gray-100 rounded flex items-center justify-center text-gray-600">
+          <template x-if="podcast.youtube_embed">
+            <iframe :src="podcast.youtube_embed" class="w-full h-full rounded" frameborder="0" allowfullscreen></iframe>
+          </template>
+          <template x-if="!podcast.youtube_embed">
+            <div class="text-center">
+              <i class="fa-solid fa-headphones text-4xl mb-2"></i>
+              <p class="font-semibold">Audio Only</p>
+            </div>
+          </template>
+        </div>
+        
+
+        <!-- Text / Links -->
+        <div class="flex-1">
+          <p class="text-sm text-gray-500 mb-1" x-text="podcast.date"></p>
+          <h3 class="text-xl font-semibold mb-2" x-text="podcast.name"></h3>
+          <p class="mb-3 text-gray-700" x-text="podcast.description"></p>
+          <div class="flex gap-3 items-center text-sm">
+            <template x-if="podcast.youtube_link">
+              <a :href="podcast.youtube_link" target="_blank" class="text-red-600 hover:underline flex items-center gap-2">
+                Watch on <i class="fa-brands fa-youtube text-xl"></i>
+              </a>
+            </template>
+            <template x-if="podcast.spotify_link">
+              <a :href="podcast.spotify_link" target="_blank" class="text-green-600 hover:underline flex items-center gap-2">
+                Listen on <i class="fa-brands fa-spotify text-xl"></i>
+              </a>
+            </template>
+            <template x-if="podcast.apple_link">
+              <a :href="podcast.apple_link" target="_blank" class="text-gray-800 hover:underline flex items-center gap-2">
+                Listen on <i class="fa-brands fa-apple text-xl"></i>
+              </a>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 </section>
