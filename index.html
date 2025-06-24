@@ -8,12 +8,13 @@
     <title>Prague Shenanigans</title>
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
 
-  <body x-cloak>
+  <body x-cloak x-data="{ active: 'map' }">
 
     <header
       class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-[var(--color-bg-base)] text-[var(--color-primary)] shadow-md"
@@ -42,22 +43,56 @@
 
         <!-- Navigation (desktop) -->
         <nav class="hidden sm:flex space-x-6">
-          <button hx-get="pages/mission.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Mission</button>
-          <button hx-get="pages/map.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Map</button>
-          <button hx-get="pages/podcasts.html" hx-target="#main-content" hx-swap="innerHTML" class="nav-button">Podcasts</button>
+          <button @click="active = 'mission'"
+            :class="{ 'active-nav': active === 'mission' }"
+            hx-get="pages/mission.html" hx-target="#main-content"
+            hx-swap="innerHTML" class="nav-button">Mission</button>
+          <button @click="active = 'map'"
+            :class="{ 'active-nav': active === 'map' }" hx-get="pages/map.html"
+            hx-target="#main-content" hx-swap="innerHTML"
+            class="nav-button">Map</button>
+          <button @click="active = 'podcasts'"
+            :class="{ 'active-nav': active === 'podcasts' }"
+            hx-get="pages/podcasts.html" hx-target="#main-content"
+            hx-swap="innerHTML" class="nav-button">Podcasts</button>
         </nav>
       </div>
 
       <!-- Mobile Navigation (dropdown) -->
       <div class="sm:hidden mt-3 px-2 space-y-2" x-show="menuOpen" x-transition>
-        <button hx-get="pages/mission.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Mission</button>
-        <button hx-get="pages/map.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Map</button>
-        <button hx-get="pages/podcasts.html" hx-target="#main-content" hx-swap="innerHTML" class="w-full text-left nav-button">Podcasts</button>
+        <button @click="active = 'mission'; menuOpen = false"
+          :class="{ 'active-nav': active === 'mission' }"
+          hx-get="pages/mission.html" hx-target="#main-content"
+          hx-swap="innerHTML"
+          class="w-full text-left nav-button">Mission</button>
+        <button @click="active = 'map'; menuOpen = false"
+          :class="{ 'active-nav': active === 'map' }" hx-get="pages/map.html"
+          hx-target="#main-content" hx-swap="innerHTML"
+          class="w-full text-left nav-button">Map</button>
+        <button @click="active = 'podcasts'; menuOpen = false"
+          :class="{ 'active-nav': active === 'podcasts' }"
+          hx-get="pages/podcasts.html" hx-target="#main-content"
+          hx-swap="innerHTML"
+          class="w-full text-left nav-button">Podcasts</button>
       </div>
     </header>
 
     <!-- Main Content Container -->
-    <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto" hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML"></main>
+    <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto fade"
+      hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML settle:0.5s">
+    </main>
+
+    <script>
+      
+      document.body.addEventListener('htmx:afterSwap', function(evt) {
+        const target = document.querySelector('#main-content');
+        // Trigger fade-in on the new .fade content
+        const fadeSection = target.querySelector('.fade');
+        if (fadeSection) {
+          fadeSection.classList.add('htmx-added');
+        }
+      });
+    </script>
 
   </body>
 
