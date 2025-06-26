@@ -5,7 +5,7 @@
     --color-accent-2: #593B4C;        /* Velvet Plum */
     --color-interactive: #2F5061;     /* Cerulean Ink */
     --color-highlight: #C24E4B;       /* Bohemian Coral */
-    --color-bg-base: #F5F3F0;         /* Foggy White */
+    --color-bg-base: #FCF1D6;         /* Foggy White */
     --color-text-base: #2A2A2A;       /* Charcoal Graphite */
 }
 
@@ -17,6 +17,12 @@ html, body {
     padding: 0;
     overscroll-behavior-y: none; /* Prevent pull-to-refresh */
     touch-action: pan-x pan-y;   /* Allow normal scroll */
+
+    background-image: url('assets/patterns/beige-paper.png');
+    background-repeat: repeat;
+    background-size: 50px 50px;
+
+   
 }
 
 a:hover {
@@ -24,5 +30,18 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    /* font-family: 'Cinzel Decorative', serif; */
+    font-family: "Viaoda Libre", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+
+p {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100,
+        "YTLC" 500;
 }

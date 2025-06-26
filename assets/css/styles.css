@@ -6,9 +6,10 @@
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
+
 .fade.htmx-added {
     opacity: 0;
-  }
+}
 
 /* iframe {
     border: none;
@@ -36,30 +37,33 @@
     font-size: 1.4rem;
     font-family: "Amatic SC", sans-serif;
     font-weight: 700;
-    
+
 
     text-transform: uppercase;
-    color: #E2592A; /* red-orange text */
-    background-color: #fceac9; /* light tan */
+    color: #E2592A;
+    /* red-orange text */
+    background-color: #fceac9;
+    /* light tan */
     border: 3px solid #E2592A;
     border-radius: 10px;
-    clip-path: polygon(
-      0% 15%, 5% 15%, 5% 0%, 95% 0%, 95% 15%, 100% 15%,
-      100% 85%, 95% 85%, 95% 100%, 5% 100%, 5% 85%, 0% 85%
-    );
+    clip-path: polygon(0% 15%, 5% 15%, 5% 0%, 95% 0%, 95% 15%, 100% 15%,
+            100% 85%, 95% 85%, 95% 100%, 5% 100%, 5% 85%, 0% 85%);
     transition: transform 0.2s ease-in-out;
-  }
-  
-  .nav-button:hover {
+}
+
+.nav-button:hover {
     transform: scale(1.03);
-  }
-  
-  .active-nav {
+}
+
+.active-nav {
     background-color: #E2592A;
     color: #fceac9;
-  }
-  
-  
+}
+
+
+
+
+
 
 /* Contact button (top right) */
 /* .contact-button {
@@ -73,4 +77,3 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
 } */
-
