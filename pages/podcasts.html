@@ -1,18 +1,36 @@
 <section class="fade" x-data="podcastList()" x-init="load()">
-  <h2 class="text-3xl font-serif mb-4 text-[var(--color-primary)]">Meet the people of Prague</h2>
-  <h3 class="text-lg leading-relaxed mb-6">
-    From a physicist-turned-hypnotherapist and a comedian, to a martial arts world champion training NATO troops — 
-    our podcast guests offer personal, often unexpected stories that reveal the real Prague behind the postcards.
-  </h3>
+  <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+
+    <!-- Text content -->
+    <div class="flex-1 text-center md:text-left">
+      <h2
+        class="text-4xl md:text-5xl font-extrabold text-[#d9481c] leading-tight tracking-wide font-serif uppercase">
+        Behind the Beards<br class="hidden md:block" />
+        & Broken Trams
+      </h2>
+      <p class="mt-4 text-lg md:text-xl text-black max-w-xl">
+        A podcast about the strange, brilliant, and slightly confused people who
+        ended up in Prague.
+      </p>
+    </div>
+
+    <!-- Art image -->
+    <div class="flex-shrink-0 w-full md:w-1/2">
+      <img src="assets/podcast_art_1.png" alt="Podcast Art"
+        class="w-full h-auto rotate-1 " />
+    </div>
+  </div>
 
   <template x-for="podcast in podcasts" :key="podcast.name">
     <div class="bg-white p-4 rounded shadow space-y-4 py-4 my-8">
       <div class="flex flex-col sm:flex-row gap-4">
 
         <!-- Video / Image -->
-        <div class="flex-shrink-0 w-full sm:w-1/2 aspect-video bg-gray-100 rounded flex items-center justify-center text-gray-600">
+        <div
+          class="flex-shrink-0 w-full sm:w-1/2 aspect-video bg-gray-100 rounded flex items-center justify-center text-gray-600">
           <template x-if="podcast.youtube_embed">
-            <iframe :src="podcast.youtube_embed" class="w-full h-full rounded" frameborder="0" allowfullscreen></iframe>
+            <iframe :src="podcast.youtube_embed" class="w-full h-full rounded"
+              frameborder="0" allowfullscreen></iframe>
           </template>
           <template x-if="!podcast.youtube_embed">
             <div class="text-center">
@@ -21,7 +39,6 @@
             </div>
           </template>
         </div>
-        
 
         <!-- Text / Links -->
         <div class="flex-1">
@@ -30,17 +47,20 @@
           <p class="mb-3 text-gray-700" x-text="podcast.description"></p>
           <div class="flex gap-3 items-center text-sm">
             <template x-if="podcast.youtube_link">
-              <a :href="podcast.youtube_link" target="_blank" class="text-red-600 hover:underline flex items-center gap-2">
+              <a :href="podcast.youtube_link" target="_blank"
+                class="text-red-600 hover:underline flex items-center gap-2">
                 Watch on <i class="fa-brands fa-youtube text-xl"></i>
               </a>
             </template>
             <template x-if="podcast.spotify_link">
-              <a :href="podcast.spotify_link" target="_blank" class="text-green-600 hover:underline flex items-center gap-2">
+              <a :href="podcast.spotify_link" target="_blank"
+                class="text-green-600 hover:underline flex items-center gap-2">
                 Listen on <i class="fa-brands fa-spotify text-xl"></i>
               </a>
             </template>
             <template x-if="podcast.apple_link">
-              <a :href="podcast.apple_link" target="_blank" class="text-gray-800 hover:underline flex items-center gap-2">
+              <a :href="podcast.apple_link" target="_blank"
+                class="text-gray-800 hover:underline flex items-center gap-2">
                 Listen on <i class="fa-brands fa-apple text-xl"></i>
               </a>
             </template>
