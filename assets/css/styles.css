@@ -31,21 +31,35 @@
 
 /* Navigation buttons (center top) */
 .nav-button {
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--color-accent-1);
-    border-radius: 999px;
-    background-color: var(--color-accent-1);
-    color: var(--color-bg-base);
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
-}
-.nav-button:hover {
-    opacity: 0.85;
-}
-.active-nav {
-    box-shadow: 0 0 0 2px var(--color-primary) inset;
-}
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    
+
+    text-transform: uppercase;
+    color: #E2592A; /* red-orange text */
+    background-color: #fceac9; /* light tan */
+    border: 3px solid #E2592A;
+    border-radius: 10px;
+    clip-path: polygon(
+      0% 15%, 5% 15%, 5% 0%, 95% 0%, 95% 15%, 100% 15%,
+      100% 85%, 95% 85%, 95% 100%, 5% 100%, 5% 85%, 0% 85%
+    );
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .nav-button:hover {
+    transform: scale(1.03);
+  }
+  
+  .active-nav {
+    background-color: #E2592A;
+    color: #fceac9;
+  }
+  
+  
 
 /* Contact button (top right) */
 /* .contact-button {
@@ -59,3 +73,8 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
 } */
+
+/* Rotate Logo */
+.fixed-rotate {
+    transform: rotate(-1deg);
+  }

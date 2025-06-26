@@ -1,0 +1,24 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Shape -->
+  <path d="
+    M0,10 
+    Q10,10 10,0 
+    H190 
+    Q190,10 200,10 
+    V50 
+    Q190,50 190,60 
+    H10 
+    Q10,50 0,50 
+    Z"
+    fill="#fceac9"
+    stroke="#c23616"
+    stroke-width="3"
+  />
+  
+  <!-- Text -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        fill="#c23616" font-size="14" font-weight="bold" font-family="Cinzel Decorative, serif"
+        style="text-transform:uppercase;">
+    MISSION
+  </text>
+</svg>

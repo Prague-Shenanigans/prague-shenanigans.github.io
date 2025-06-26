@@ -10,6 +10,12 @@
 
     <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
+      rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer
@@ -21,7 +27,7 @@
   <body x-cloak x-data="router()" x-init="init()">
 
     <header
-      class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-[var(--color-bg-base)] text-[var(--color-primary)] shadow-md"
+      class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-gradient-to-b from-white to-transparent text-[var(--color-primary)]"
       x-data="{ menuOpen: false }">
 
       <div
@@ -29,8 +35,8 @@
 
         <!-- Logo (left) -->
         <div class="flex-shrink-0">
-          <img src="assets/logo/web_logo.png" alt="Logo"
-            class="h-14 sm:h-15 w-auto" />
+          <img src="assets/logo/web_logo_v2.png" alt="Logo"
+            class="h-20 sm:h-15 w-auto -rotate-2" />
         </div>
 
         <!-- Hamburger Button (mobile) -->
@@ -48,35 +54,37 @@
         <!-- Navigation (desktop) -->
         <nav class="hidden sm:flex space-x-6">
           <button @click="navigate('mission')"
-                  :class="{ 'active-nav': active === 'mission' }"
-                  class="nav-button">Mission</button>
-        
+            :class="{ 'active-nav': active === 'mission' }"
+            class="nav-button -rotate-1">Mission</button>
+
           <button @click="navigate('map')"
-                  :class="{ 'active-nav': active === 'map' }"
-                  class="nav-button">Explore</button>
-        
+            :class="{ 'active-nav': active === 'map' }"
+            class="nav-button rotate-1">Explore</button>
+
           <button @click="navigate('podcasts')"
-                  :class="{ 'active-nav': active === 'podcasts' }"
-                  class="nav-button">Meet the People</button>
+            :class="{ 'active-nav': active === 'podcasts' }"
+            class="nav-button">Meet the People</button>
         </nav>
-        
+
       </div>
 
       <!-- Mobile Navigation (dropdown) -->
-      <div class="sm:hidden mt-3 px-2 space-y-2" x-show="menuOpen" x-transition>
+      <div
+        class="sm:hidden mt-10 mb-10 px-2 space-y-8 flex flex-col items-center text-center"
+        x-show="menuOpen" x-transition>
         <button @click="navigate('mission'); menuOpen = false"
-                :class="{ 'active-nav': active === 'mission' }"
-                class="w-full text-left nav-button">Mission</button>
-      
+          :class="{ 'active-nav': active === 'mission' }"
+          class="nav-button">Mission</button>
+
         <button @click="navigate('map'); menuOpen = false"
-                :class="{ 'active-nav': active === 'map' }"
-                class="w-full text-left nav-button">Map</button>
-      
+          :class="{ 'active-nav': active === 'map' }"
+          class="nav-button">Explore</button>
+
         <button @click="navigate('podcasts'); menuOpen = false"
-                :class="{ 'active-nav': active === 'podcasts' }"
-                class="w-full text-left nav-button">Podcasts</button>
+          :class="{ 'active-nav': active === 'podcasts' }"
+          class="nav-button">Meet the People</button>
       </div>
-      
+
     </header>
 
     <!-- Main Content Container -->
@@ -139,7 +147,6 @@
       }
 
     </script>
-    
 
   </body>
 
