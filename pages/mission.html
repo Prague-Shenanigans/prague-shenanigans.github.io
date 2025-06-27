@@ -24,7 +24,7 @@
 
   </div>
 
-  <!-- Tram and Map Section -->
+  <!-- Map Section -->
 
   <div
     class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12">
@@ -38,7 +38,9 @@
         interesting micro history and facts —
         maybe even some legends as well.
       </p>
-      <button class="text-white px-5 py-2 nav-button bg-[#d9481c]">
+      <button
+        @click="navigate('map')"
+        class="text-white px-5 py-2 nav-button bg-[#d9481c]">
         Explore!
       </button>
     </div>
