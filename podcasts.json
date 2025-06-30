@@ -1,4 +1,13 @@
-[
+[    
+    {
+      "name": "Test Podcast",
+      "date": "2025-06-25",
+      "description": "In this episode of Shenanigans, we sit down with Orestis — a Greek expat who came to Prague to study black holes… and ended up diving into the human psyche instead. ",
+      "youtube_embed": "https://www.youtube.com/embed/DlrzPQImf5s",
+      "youtube_link": "https://www.youtube.com/watch?v=DlrzPQImf5s",
+      "spotify_link": "https://open.spotify.com/show/xyz",
+      "apple_link": "https://podcasts.apple.com/podcast/xyz"
+    },
     {
       "name": "From Physics to Hypnosis: Orestis' shift in Prague",
       "date": "2025-06-17",
