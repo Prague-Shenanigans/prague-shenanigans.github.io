@@ -13,7 +13,9 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
       rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap"
+      rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer
@@ -102,15 +104,20 @@
       });
 
       function podcastList() {
-        const state = {
-          podcasts: [],
-            async load() {
-            const response = await fetch('podcasts.json');
-            this.podcasts = await response.json();
-        }
-        };
-        return state;
+        return {
+        podcasts: [],
+        async load() {
+        try {
+          const response = await fetch('https://she-be.nonode.dev/api/podcasts/');
+          if (!response.ok) throw new Error('Failed to fetch');
+          this.podcasts = await response.json();
+        } catch (e) {
+        console.error("Error loading podcasts:", e);
       }
+    }
+  };
+}
+
 
       function router() {
         return {
