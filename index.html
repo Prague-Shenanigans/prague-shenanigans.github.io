@@ -105,18 +105,18 @@
 
       function podcastList() {
         return {
-        podcasts: [],
-        async load() {
-        try {
-          const response = await fetch('https://she-be.nonode.dev/api/podcasts/');
-          if (!response.ok) throw new Error('Failed to fetch');
-          this.podcasts = await response.json();
-        } catch (e) {
-        console.error("Error loading podcasts:", e);
+          podcasts: [],
+          async load() {
+          try {
+            const response = await fetch('https://she-be.nonode.dev/api/podcasts/');
+            if (!response.ok) throw new Error('Failed to fetch');
+            this.podcasts = await response.json();
+            } catch (e) {
+              console.error("Error loading podcasts:", e);
+            }
+          }
+        };
       }
-    }
-  };
-}
 
 
       function router() {
