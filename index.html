@@ -2,168 +2,164 @@
 <html lang="en" x-data="{ section: 'map' }"
   class="scroll-smooth bg-[var(--color-bg-base)] text-[var(--color-text-base)]">
 
-  <head>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-83P3S7TN5N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-83P3S7TN5N');
+  </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async
-      src="https://www.googletagmanager.com/gtag/js?id=G-83P3S7TN5N"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-83P3S7TN5N');
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prague Shenanigans</title>
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prague Shenanigans</title>
-    <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
 
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
-      rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <script defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-  </head>
+<body x-cloak x-data="router()" x-init="init()">
 
-  <body x-cloak x-data="router()" x-init="init()">
+  <!-- Navbar (hidden for map.html) -->
+  <header
+    x-show="active !== 'map'"
+    class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-gradient-to-b from-white to-transparent text-[var(--color-primary)]"
+    x-data="{ menuOpen: false }">
 
-    <header
-      class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-gradient-to-b from-white to-transparent text-[var(--color-primary)]"
-      x-data="{ menuOpen: false }">
+    <div
+      class="relative max-w-screen-xl mx-auto w-full flex items-center justify-between">
 
-      <div
-        class="relative max-w-screen-xl mx-auto w-full flex items-center justify-between">
-
-        <!-- Logo (left) -->
-        <div class="flex-shrink-0">
-          <img src="assets/logo/web_logo_v3.png" alt="Logo"
-            class="h-20 sm:h-15 w-auto -rotate-2" />
-        </div>
-
-        <!-- Hamburger Button (mobile) -->
-        <button class="sm:hidden focus:outline-none"
-          @click="menuOpen = !menuOpen">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-
-        <!-- Navigation (desktop) -->
-        <nav class="hidden sm:flex space-x-6">
-          <button @click="navigate('mission')"
-            :class="{ 'active-nav': active === 'mission' }"
-            class="nav-button -rotate-1">Mission</button>
-
-          <button @click="navigate('map')"
-            :class="{ 'active-nav': active === 'map' }"
-            class="nav-button rotate-1">Explore</button>
-
-          <button @click="navigate('podcasts')"
-            :class="{ 'active-nav': active === 'podcasts' }"
-            class="nav-button">Meet the People</button>
-        </nav>
-
+      <!-- Logo (left) -->
+      <div class="flex-shrink-0">
+        <img src="assets/logo/web_logo_v3.png" alt="Logo"
+          class="h-20 sm:h-15 w-auto -rotate-2" />
       </div>
 
-      <!-- Mobile Navigation (dropdown) -->
-      <div
-        class="sm:hidden mt-10 mb-10 px-2 space-y-8 flex flex-col items-center text-center"
-        x-show="menuOpen" x-transition>
-        <button @click="navigate('mission'); menuOpen = false"
+      <!-- Hamburger Button (mobile) -->
+      <button class="sm:hidden focus:outline-none"
+        @click="menuOpen = !menuOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Navigation (desktop) -->
+      <nav class="hidden sm:flex space-x-6">
+        <button @click="navigate('mission')"
           :class="{ 'active-nav': active === 'mission' }"
-          class="nav-button">Mission</button>
+          class="nav-button -rotate-1">Mission</button>
 
-        <button @click="navigate('map'); menuOpen = false"
+        <button @click="navigate('map')"
           :class="{ 'active-nav': active === 'map' }"
-          class="nav-button">Explore</button>
+          class="nav-button rotate-1">Explore</button>
 
-        <button @click="navigate('podcasts'); menuOpen = false"
+        <button @click="navigate('podcasts')"
           :class="{ 'active-nav': active === 'podcasts' }"
           class="nav-button">Meet the People</button>
-      </div>
+      </nav>
 
-    </header>
+    </div>
 
-    <!-- Main Content Container -->
-    <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto fade"
-      hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML settle:0.5s">
-    </main>
+    <!-- Mobile Navigation (dropdown) -->
+    <div
+      class="sm:hidden mt-10 mb-10 px-2 space-y-8 flex flex-col items-center text-center"
+      x-show="menuOpen" x-transition>
+      <button @click="navigate('mission'); menuOpen = false"
+        :class="{ 'active-nav': active === 'mission' }"
+        class="nav-button">Mission</button>
 
-    <script>
-      
-      document.body.addEventListener('htmx:afterSwap', function(evt) {
-        const target = document.querySelector('#main-content');
-        // Trigger fade-in on the new .fade content
-        const fadeSection = target.querySelector('.fade');
-        if (fadeSection) {
-          fadeSection.classList.add('htmx-added');
-        }
-      });
+      <button @click="navigate('map'); menuOpen = false"
+        :class="{ 'active-nav': active === 'map' }"
+        class="nav-button">Explore</button>
 
-      function podcastList() {
-        return {
-          podcasts: [],
-          async load() {
+      <button @click="navigate('podcasts'); menuOpen = false"
+        :class="{ 'active-nav': active === 'podcasts' }"
+        class="nav-button">Meet the People</button>
+    </div>
+
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto fade"
+    hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML settle:0.5s">
+  </main>
+
+  <script>
+    document.body.addEventListener('htmx:afterSwap', function (evt) {
+      const target = document.querySelector('#main-content');
+      // Trigger fade-in on the new .fade content
+      const fadeSection = target.querySelector('.fade');
+      if (fadeSection) {
+        fadeSection.classList.add('htmx-added');
+      }
+    });
+
+    function podcastList() {
+      return {
+        podcasts: [],
+        async load() {
           try {
             const response = await fetch('https://she-be.nonode.dev/api/podcasts/');
             if (!response.ok) throw new Error('Failed to fetch');
             this.podcasts = await response.json();
-            } catch (e) {
-              console.error("Error loading podcasts:", e);
-            }
-          }
-        };
-      }
-
-
-      function router() {
-        return {
-          active: 'map',
-          routes: {
-            'mission': 'pages/mission.html',
-            'map': 'pages/map.html',
-            'podcasts': 'pages/podcasts.html'
-          },
-    
-          init() {
-            window.addEventListener('hashchange', this.route.bind(this));
-            this.route(); // Load initial route
-          },
-    
-          route() {
-            const hash = window.location.hash.replace('#/', '') || 'map';
-            this.active = hash;
-    
-            if (this.routes[hash]) {
-              document.getElementById('main-content').setAttribute('hx-get', this.routes[hash]);
-              document.getElementById('main-content').removeAttribute('hx-trigger'); // ensure fresh reload
-              htmx.process(document.getElementById('main-content'));
-              htmx.ajax('GET', this.routes[hash], '#main-content');
-            }
-          },
-    
-          navigate(target) {
-            window.location.hash = `#/${target}`;
+          } catch (e) {
+            console.error("Error loading podcasts:", e);
           }
         }
+      };
+    }
+
+    function router() {
+      return {
+        active: 'map',
+        routes: {
+          'mission': 'pages/mission.html',
+          'map': 'pages/map.html',
+          'podcasts': 'pages/podcasts.html'
+        },
+
+        init() {
+          window.addEventListener('hashchange', this.route.bind(this));
+          this.route(); // Load initial route
+        },
+
+        route() {
+          const hash = window.location.hash.replace('#/', '') || 'map';
+          this.active = hash;
+
+          if (this.routes[hash]) {
+            document.getElementById('main-content').setAttribute('hx-get', this.routes[hash]);
+            document.getElementById('main-content').removeAttribute('hx-trigger'); // ensure fresh reload
+            htmx.process(document.getElementById('main-content'));
+            htmx.ajax('GET', this.routes[hash], '#main-content');
+          }
+        },
+
+        navigate(target) {
+          window.location.hash = `#/${target}`;
+        }
       }
+    }
+  </script>
 
-    </script>
-
-  </body>
+</body>
 
 </html>
