@@ -105,7 +105,6 @@
   <script>
     document.body.addEventListener('htmx:afterSwap', function (evt) {
       const target = document.querySelector('#main-content');
-      // Trigger fade-in on the new .fade content
       const fadeSection = target.querySelector('.fade');
       if (fadeSection) {
         fadeSection.classList.add('htmx-added');
@@ -143,12 +142,17 @@
 
         route() {
           const hash = window.location.hash.replace('#/', '') || 'map';
+
+          // Prevent reload if already on the same section
+          if (this.active === hash) return;
+
           this.active = hash;
 
           if (this.routes[hash]) {
-            document.getElementById('main-content').setAttribute('hx-get', this.routes[hash]);
-            document.getElementById('main-content').removeAttribute('hx-trigger'); // ensure fresh reload
-            htmx.process(document.getElementById('main-content'));
+            const mainContent = document.getElementById('main-content');
+            mainContent.setAttribute('hx-get', this.routes[hash]);
+            mainContent.removeAttribute('hx-trigger');
+            htmx.process(mainContent);
             htmx.ajax('GET', this.routes[hash], '#main-content');
           }
         },
