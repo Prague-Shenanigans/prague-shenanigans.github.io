@@ -17,14 +17,9 @@
   <title>Prague Shenanigans</title>
   <link rel="icon" type="image/png" href="assets/logo/favicon.png">
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Viaoda+Libre&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/theme.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -40,9 +35,7 @@
     class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 bg-gradient-to-b from-white to-transparent text-[var(--color-primary)]"
     x-data="{ menuOpen: false }">
 
-    <div
-      class="relative max-w-screen-xl mx-auto w-full flex items-center justify-between">
-
+    <div class="relative max-w-screen-xl mx-auto w-full flex items-center justify-between">
       <!-- Logo (left) -->
       <div class="flex-shrink-0">
         <img src="assets/logo/web_logo_v3.png" alt="Logo"
@@ -50,14 +43,11 @@
       </div>
 
       <!-- Hamburger Button (mobile) -->
-      <button class="sm:hidden focus:outline-none"
-        @click="menuOpen = !menuOpen">
+      <button class="sm:hidden focus:outline-none" @click="menuOpen = !menuOpen">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
+          viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
+            stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
 
@@ -75,12 +65,10 @@
           :class="{ 'active-nav': active === 'podcasts' }"
           class="nav-button">Meet the People</button>
       </nav>
-
     </div>
 
     <!-- Mobile Navigation (dropdown) -->
-    <div
-      class="sm:hidden mt-10 mb-10 px-2 space-y-8 flex flex-col items-center text-center"
+    <div class="sm:hidden mt-10 mb-10 px-2 space-y-8 flex flex-col items-center text-center"
       x-show="menuOpen" x-transition>
       <button @click="navigate('mission'); menuOpen = false"
         :class="{ 'active-nav': active === 'mission' }"
@@ -94,23 +82,14 @@
         :class="{ 'active-nav': active === 'podcasts' }"
         class="nav-button">Meet the People</button>
     </div>
-
   </header>
 
   <!-- Main Content Container -->
-  <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto fade"
-    hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML settle:0.5s">
+  <main id="main-content" class="pt-32 px-6 max-w-4xl mx-auto">
+    <div id="page-container" hx-get="pages/map.html" hx-trigger="load" hx-swap="innerHTML"></div>
   </main>
 
   <script>
-    document.body.addEventListener('htmx:afterSwap', function (evt) {
-      const target = document.querySelector('#main-content');
-      const fadeSection = target.querySelector('.fade');
-      if (fadeSection) {
-        fadeSection.classList.add('htmx-added');
-      }
-    });
-
     function podcastList() {
       return {
         podcasts: [],
@@ -142,18 +121,16 @@
 
         route() {
           const hash = window.location.hash.replace('#/', '') || 'map';
-
-          // Prevent reload if already on the same section
           if (this.active === hash) return;
 
           this.active = hash;
 
           if (this.routes[hash]) {
-            const mainContent = document.getElementById('main-content');
-            mainContent.setAttribute('hx-get', this.routes[hash]);
-            mainContent.removeAttribute('hx-trigger');
-            htmx.process(mainContent);
-            htmx.ajax('GET', this.routes[hash], '#main-content');
+            const target = document.querySelector('#page-container');
+            target.setAttribute('hx-get', this.routes[hash]);
+            target.removeAttribute('hx-trigger');
+            htmx.process(target);
+            htmx.ajax('GET', this.routes[hash], '#page-container');
           }
         },
 
@@ -163,7 +140,6 @@
       }
     }
   </script>
-
 </body>
 
 </html>
